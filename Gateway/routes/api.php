@@ -14,6 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/cities', [UserController::class, 'index']);
+Route::post('/cities', [UserController::class, 'store']);
+Route::get('/cities/{id}', [UserController::class, 'show']);
+Route::put('/cities/{id}', [UserController::class, 'update']);
+Route::delete('/cities/{id}', [UserController::class, 'destroy']);
+
+Route::get('/fires', [UserController::class, 'index']);
+Route::post('/fires', [UserController::class, 'store']);
+Route::get('/fires/{id}', [UserController::class, 'show']);
+Route::put('/fires/{id}', [UserController::class, 'update']);
+Route::delete('/fires/{id}', [UserController::class, 'destroy']);
+
+Route::get('/rains', [UserController::class, 'index']);
+Route::post('/rains', [UserController::class, 'store']);
+Route::get('/rains/{id}', [UserController::class, 'show']);
+Route::put('/rains/{id}', [UserController::class, 'update']);
+Route::delete('/rains/{id}', [UserController::class, 'destroy']);
