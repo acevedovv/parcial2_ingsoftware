@@ -1,0 +1,23 @@
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+@app.route('/convert', methods=['POST'])
+def convert_temperature():
+    try:
+        data = request.get_json()
+        fahrenheit = data.get("fahrenheit")
+        
+        if fahrenheit is None:
+            return jsonify({"error": "Missing 'fahrenheit' field"}), 400
+        
+        if not isinstance(fahrenheit, (int, float)):
+            return jsonify({"error": "'fahrenheit' must be a number"}), 400
+        
+        celsius = (5/9) * (fahrenheit - 32)
+        return jsonify({"celsius": round(celsius, 2)})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == '__main__':
+    app.run(debug=True)
