@@ -17,10 +17,10 @@ use App\Http\Controllers\RainController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('filter')->get('/fires', function (Request $request) {
+    Route::get('/fires', [UserController::class, 'index']);
+    Route::post('/fires', [UserController::class, 'store']);
+    Route::get('/fires/{id}', [UserController::class, 'show']);
+    Route::put('/fires/{id}', [UserController::class, 'update']);
+    Route::delete('/fires/{id}', [UserController::class, 'destroy']);
 });
-
-Route::get('/cities', [CityController::class, 'index']);
-Route::get('/cities/{id}', [CityController::class, 'show']);
-Route::get('/rain/max', [RainController::class, 'getMaxRainfallData']);
