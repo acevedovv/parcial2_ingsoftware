@@ -13,11 +13,6 @@ return new class extends Migration
     {
         Schema::create('rain', function (Blueprint $table) {
             $table->id();
-            $table-> integer('duration');
-            $table->unsignedBigInteger('city_id');
-            $table->foreign('city_id')->references('id')->on('cities');
-            $table-> float('amount_rain');
-            $table-> boolean('risk_zone');
             $table->timestamps();
         });
     }

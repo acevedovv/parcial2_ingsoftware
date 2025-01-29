@@ -15,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    Route::get('/rains', [UserController::class, 'index']);
+    Route::post('/rains', [UserController::class, 'store']);
+    Route::get('/rains/{id}', [UserController::class, 'show']);
+    Route::put('/rains/{id}', [UserController::class, 'update']);
+    Route::delete('/rains/{id}', [UserController::class, 'destroy']);
+
 });
