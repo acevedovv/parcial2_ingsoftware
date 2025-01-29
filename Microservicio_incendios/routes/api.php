@@ -4,6 +4,7 @@ use App\Models\City;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\RainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/cities', [CityController::class, 'index']);
+Route::get('/cities/{id}', [CityController::class, 'show']);
+Route::get('/rain/max', [RainController::class, 'getMaxRainfallData']);
